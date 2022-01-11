@@ -1,0 +1,102 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <string.h>
+#include "bankhead.h"
+
+struct client {
+	int id;
+	char name[20];
+	int remain;
+};
+
+client accArr[100];
+int Accnum = 0;
+
+void ShowMenu(void) {
+	std::cout << "---------------Menu------------------" << std::endl;
+	std::cout << "1. 계좌개설" << std::endl;
+	std::cout << "2. 입   금" << std::endl;
+	std::cout << "3. 출   금" << std::endl;
+	std::cout << "4. 전체고객 잔액조회" << std::endl;
+	std::cout << "5. 프로그램 종료" << std::endl;
+}
+
+void MakeAccount(void) {
+
+	int cid;
+	char cname[20];
+	int balance;
+
+	std::cout << "[계좌개설]" << std::endl;
+	std::cout << "계좌ID: ";
+	std::cin >> cid;
+	std::cout << "이 름: ";
+	std::cin >> cname;
+	std::cout << "입금액: ";
+	std::cin >> balance;
+	std::cout << std::endl;
+	accArr[Accnum].id = cid;
+	strcpy(accArr[Accnum].name, cname);
+	accArr[Accnum].remain = balance;
+	Accnum += 1;
+}
+
+void Deposit(void) {
+
+	int cid;
+	int pmoney;
+
+	std::cout << "[입    금]" << std::endl;
+	std::cout << "계좌ID: ";
+	std::cin >> cid;
+	std::cout << "입금액: ";
+	std::cin >> pmoney;
+	for (int i = 0; i < Accnum; i++) {
+		if (accArr[i].id == cid) {
+			accArr[i].remain += pmoney;
+			std::cout << "입금완료" << std::endl;;
+			return;
+		}
+		std::cout << "유효하지 않은 id입니다." << "/n" << std::endl;
+		
+	}
+	
+}
+
+void Withdraw(void) {
+	int cid;
+	int pmoney;
+
+	std::cout << "[출    금]" << std::endl;
+	std::cout << "계좌ID: ";
+	std::cin >> cid;
+	std::cout << "출금액: ";
+	std::cin >> pmoney;
+	for (int i = 0; i < Accnum; i++) {
+		if (accArr[i].id == cid) {
+			if (pmoney <= accArr[i].remain) {
+				accArr[i].remain -= pmoney;
+				std::cout << "출금완료" << std::endl;;
+				return;
+			}
+			else {
+				std::cout << "잔액이 부족합니다" << std::endl;
+			}
+		}
+		std::cout << "유효하지 않은 id입니다." << "/n" << std::endl;
+
+	}
+	
+
+
+}
+
+void ShowAllAcc(void) {
+
+	for (int i = 0; i < Accnum; i++) {
+
+		std::cout << "계좌ID: " <<accArr[i].id<< std::endl;
+		std::cout << "이 름: " <<accArr[i].name<< std::endl;
+		std::cout << "잔 액: " <<accArr[i].remain<< std::endl;
+	}
+}

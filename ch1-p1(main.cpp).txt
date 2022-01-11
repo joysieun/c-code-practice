@@ -1,0 +1,37 @@
+#include "bankhead.h"
+#include <iostream>
+
+int main(void) {
+
+	int choice;
+	
+
+	while (1) {
+		ShowMenu();
+		std::cout << "선택: ";
+		std::cin >> choice;
+		std::cout << std::endl;
+		
+		switch (choice) {
+		case 1:
+			MakeAccount();
+			break;
+		case 2:
+			Deposit();
+			break;
+		case 3:
+			Withdraw();
+			break;
+		case 4:
+			ShowAllAcc();
+			break;
+		case 5:
+			return 0;
+		default:
+			std::cout << "잘못된 선택" << std::endl;
+		}
+		
+
+	}
+
+}

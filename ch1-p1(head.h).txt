@@ -1,0 +1,6 @@
+void ShowMenu(void);
+void MakeAccount(void);
+void Deposit(void);
+void Withdraw(void);
+void ShowAllAcc(void);
+

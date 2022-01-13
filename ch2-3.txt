@@ -1,0 +1,32 @@
+#include <iostream>
+
+typedef struct __Point
+{
+	int xpos;
+	int ypos;
+
+}Point;
+
+Point& PntAdder(const Point& p1, const Point& p2) {
+	
+	Point* num3 = new Point;
+	num3->xpos = p1.xpos + p2.xpos;
+	num3->ypos = p1.ypos + p2.ypos;
+
+	return *num3;
+}
+
+int main() {
+
+	Point* num1 = new Point;
+	Point* num2 = new Point;
+	num1->xpos = 10;
+	num1->ypos = 10;
+	num2->xpos = 20;
+	num2->ypos = 20;
+	Point &result = PntAdder(*num1, *num2);
+
+	std::cout << result.xpos<<result.ypos << std::endl;
+	
+
+}

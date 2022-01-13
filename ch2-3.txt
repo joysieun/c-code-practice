@@ -29,4 +29,8 @@ int main() {
 	std::cout << result.xpos<<result.ypos << std::endl;
 	
 
+	delete num2;
+	delete num1;
+	delete& result;
+
 }

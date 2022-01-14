@@ -1,0 +1,65 @@
+#include <iostream>
+
+class Calculator {
+private:
+	
+	int ad;
+	int mi;
+	int mu;
+	int di;
+
+public:
+	void Init();
+	double Add(double num1, double num2);
+	double Min(double num1, double num2);
+	double Mul(double num1, double num2);
+	double Div(double num1, double num2);
+	void ShowOpCount();
+};
+
+void Calculator::Init() {
+	int ad = 0;
+	int mi = 0;
+	int mu = 0;
+	int di = 0;
+}
+
+double Calculator::Add(double num1, double num2) {
+
+	ad++;
+	return num1 + num2;
+}
+double Calculator::Min(double num1, double num2) {
+	mi += 1;
+	return num1 - num2;
+}
+
+double Calculator::Mul(double num1, double num2) {
+	
+	mu += 1;
+	return num1 * num2;
+}
+double Calculator::Div(double num1, double num2) {
+	if (num2 != 0) {
+		
+		di += 1;
+		return num1 / num2;
+	}
+	else {
+		std::cout << "계산할수 없음" << std::endl;
+		return 0;
+	}
+}
+
+
+void Calculator::ShowOpCount() {
+	
+	std::cout << ad << mi << mu << di << std::endl;
+}
+
+int main(void) {
+	Calculator cal;
+	cal.Init();
+	std::cout << cal.Add(3.2, 2.4) << std::endl;
+	cal.ShowOpCount();
+}
